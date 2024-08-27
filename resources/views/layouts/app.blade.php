@@ -52,6 +52,14 @@
                         </a>
                     </li>
 
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('login_salir')}}">
+                            <i class="align-middle fa-solid fa-right-from-bracket"></i>
+
+                            <span class="align-middle">Salir</span>
+                        </a>
+                    </li>
+
                 </ul>
 
             </div>
@@ -73,10 +81,28 @@
                                 {{\App\Helpers\Helpers::fecha(date('Y-m-d'))}}
                             </a>
                             <a class="nav-link d-none d-sm-inline-block">
-                               |
+                                |
                             </a>
                             <a class="nav-link d-none d-sm-inline-block" id="spanreloj">
-                              
+
+                            </a>
+                            <a class="nav-link d-none d-sm-inline-block">
+                                |
+                            </a>
+                            <a class="nav-link d-none d-sm-inline-block">
+
+                                {{Auth::user()->name}}
+
+                            </a>
+                            <a class="nav-link d-none d-sm-inline-block">
+                                |
+                            </a>
+                            <a class="nav-link d-none d-sm-inline-block">
+                                
+                            @session('perfiles')
+                                {{$value}}
+                            @endsession
+
                             </a>
                         </li>
 

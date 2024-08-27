@@ -41,4 +41,16 @@ class LoginController extends Controller
             return redirect()->route('login_index');
         }
     }
+
+    public function login_salir(Request $request){
+
+        Auth::logout();
+
+        $request->session()->forget('users_metadata_id');
+        $request->session()->forget('perfiles_id');
+        $request->session()->forget('perfiles');
+
+        return redirect()->route('login_index');
+
+    }
 }
