@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\MarcasController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductsController;
@@ -18,6 +20,16 @@ Route::get('/', [HomeController::class, 'home_index'])->name("home_index")->midd
 
 //Ruta usuarios
 Route::get('/usuarios', [UserController::class, 'user_index'])->name('user_index')->middleware(Acceso::class);
+
+//Ruta categorias
+Route::get('/categorias', [CategoriasController::class, 'categorias_index'])->name('categorias_index')->middleware(Acceso::class);
+
+Route::post('/categorias', [CategoriasController::class, 'categorias_index_post'])->name('categorias_index_post')->middleware(Acceso::class);
+
+//Ruta marcas
+Route::get('/marcas', [MarcasController::class, 'marcas_index'])->name('marcas_index')->middleware(Acceso::class);
+
+Route::post('/marcas', [MarcasController::class, 'marcas_index_post'])->name('marcas_index_post')->middleware(Acceso::class);
 
 //Ruta productos
 Route::get('/productos', [ProductsController::class, 'product_index'])->name('product_index')->middleware(Acceso::class);

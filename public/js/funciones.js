@@ -71,7 +71,7 @@ function abrir_modal(modal, title, accion, campos, dato)
 {
     $(`#${modal}`).modal('show');
     $(`#${modal}_titulo`).text(title);
-    document.getElementById("accion").value=accion;
+   /*  document.getElementById("accion").value=accion;
     if(campos.length>=1)
     {
       campos.forEach(
@@ -83,7 +83,7 @@ function abrir_modal(modal, title, accion, campos, dato)
     }else
     {
       document.form.reset();
-    }  
+    }   */
 }
  
 window.onload = function() {

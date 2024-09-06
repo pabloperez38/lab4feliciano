@@ -38,6 +38,13 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{route('categorias_index')}}">
+                            <i class="align-middle fas fa-list"></i>
+
+                            <span class="align-middle">Categorías</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
                         <a class="sidebar-link" href="{{route('user_index')}}">
                             <i class="align-middle fas fa-users"></i>
 

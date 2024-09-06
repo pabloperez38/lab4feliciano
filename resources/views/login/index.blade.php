@@ -13,7 +13,7 @@
                     <div class="text-center mt-4">
                         <h1 class="h2">Login</h1>
                         <p class="lead">
-                            Desarrollado por Laravel 11
+                            Desarrollado con Laravel 11
                         </p>
 
                         @if ($errors->any())
