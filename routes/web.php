@@ -33,6 +33,7 @@ Route::post('/marcas', [MarcasController::class, 'marcas_index_post'])->name('ma
 
 //Ruta productos
 Route::get('/productos', [ProductsController::class, 'product_index'])->name('product_index')->middleware(Acceso::class);
+Route::post('/productos', [ProductsController::class, 'productos_index_post'])->name('productos_index_post')->middleware(Acceso::class);
 
 //Página login
 Route::get('/login', [LoginController::class, 'login_index'])->name('login_index');

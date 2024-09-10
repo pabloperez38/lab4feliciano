@@ -53,7 +53,7 @@
                                             <td>{{$dato->id}}</td>
                                             <td>{{$dato->nombre}}</td>
                                             <td>
-                                                <a class="btn btn-warning" href=""><i class="fas fa-edit"></i></a>
+                                                <button class="btn btn-warning"  onclick="abrir_modal('ventana_modal', 'Editar {{$dato->nombre}}', 2, ['nombre'], {{$dato}})" ><i class="fas fa-edit"></i></button>
                                                 <a class="btn btn-danger" href=""><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>

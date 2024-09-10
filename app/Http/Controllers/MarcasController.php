@@ -30,7 +30,14 @@ class MarcasController extends Controller
             $save->nombre = $request->nombre;
             $save->save();
             return redirect()->route("marcas_index");
-            }           
+            }
+        if ($request->input('accion') == "2") {
+
+            $save = Marcas::where(["id" => $request->id])->first();
+            $save->nombre = $request->nombre;
+            $save->save();
+            return redirect()->route("marcas_index");
+            }          
      
     }
 }

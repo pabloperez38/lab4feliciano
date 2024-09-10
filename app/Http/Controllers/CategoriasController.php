@@ -31,6 +31,13 @@ class CategoriasController extends Controller
 
             return redirect()->route("categorias_index");
         }
+        if ($request->input('accion') == "2") {
+
+            $save = Categorias::where(["id" => $request->id])->first();
+            $save->nombre = $request->nombre;
+            $save->save();
+            return redirect()->route("categorias_index");
+            }  
 
     }
 }

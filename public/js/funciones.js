@@ -27,66 +27,57 @@ function muestraReloj() {
         document.layers.spanreloj.document.write(cadenareloj);
         document.layers.spanreloj.document.close();
     } else if (document.all) spanreloj.innerHTML = cadenareloj;
-    else if (document.getElementById) document.getElementById("spanreloj").innerHTML = cadenareloj;
+    else if (document.getElementById)
+        document.getElementById("spanreloj").innerHTML = cadenareloj;
     // Ejecuto la funcion con un intervalo de un segundo
     setTimeout("muestraReloj()", 1000);
 }
-function cerrarSesion(ruta)
-{
+function cerrarSesion(ruta) {
     Swal.fire({
-        title: 'Realmente deseas cerrar tu sesión?',
-        icon: 'info',
+        title: "Realmente deseas cerrar tu sesión?",
+        icon: "info",
         showDenyButton: true,
         showCancelButton: true,
-        confirmButtonText: 'Si',
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'NO' 
-      }).then((result) => {
-        
+        confirmButtonText: "Si",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "NO",
+    }).then((result) => {
         if (result.isConfirmed) {
-          window.location=ruta;
-        }  
-      });
+            window.location = ruta;
+        }
+    });
 }
-function confirmarSweet(pregunta, ruta)
-{
+function confirmarSweet(pregunta, ruta) {
     Swal.fire({
         title: pregunta,
-        icon: 'error',
+        icon: "error",
         showDenyButton: true,
         showCancelButton: true,
-        confirmButtonText: 'Si',
-        confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            cancelButtonText: 'NO' 
-      }).then((result) => {
-        
+        confirmButtonText: "Si",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        cancelButtonText: "NO",
+    }).then((result) => {
         if (result.isConfirmed) {
-          window.location=ruta;
-        }  
-      })
-}
-function abrir_modal(modal, title, accion, campos, dato)
-{
-    $(`#${modal}`).modal('show');
-    $(`#${modal}_titulo`).text(title);
-   /*  document.getElementById("accion").value=accion;
-    if(campos.length>=1)
-    {
-      campos.forEach(
-        (campo) => {
-          document.getElementById(campo).value=dato[campo];
+            window.location = ruta;
         }
-        );
-        document.getElementById("id").value=dato['id'];
-    }else
-    {
-      document.form.reset();
-    }   */
+    });
 }
- 
-window.onload = function() {
-    muestraReloj();
+function abrir_modal(modal, title, accion, campos, dato) {
+    $(`#${modal}`).modal("show");
+    $(`#${modal}_titulo`).text(title);
+    document.getElementById("accion").value = accion;
+    if (campos.length >= 1) {
+        campos.forEach((campo) => {
+            document.getElementById(campo).value = dato[campo];
+        });
+        document.getElementById("id").value = dato["id"];
+    } else {
+        document.form.reset();
+    }
+}
 
+window.onload = function () {
+    muestraReloj();
 };
