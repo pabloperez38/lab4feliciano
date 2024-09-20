@@ -12,6 +12,20 @@
 
             <div class="col-12 col-lg-12">
 
+                @if(Session::has('mensaje'))
+
+                <div class="alert alert-{{Session::get('css')}} alert-dismissible fade show" role="alert">
+
+                    {{Session::get('mensaje')}}                   
+                    
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+
+                  {{Session::forget('css')}}
+                  {{Session::forget('mensaje')}}
+
+                @endif
+
                 @if ($errors->any())
 
                     <div class="alert alert-danger alert-dismissible fade show p-3" role="alert">
@@ -67,7 +81,7 @@
                                         <td>
                                             <button class="btn btn-warning"  onclick="abrir_modal('ventana_modal', 'Editar {{$dato->nombre}}', 2, ['nombre', 'stock', 'id_categoria', 'id_marca'], {{$dato}})" ><i class="fas fa-edit"></i></button>
 
-                                            <a class="btn btn-danger" href=""><i class="fas fa-trash"></i></a>
+                                            <button type="button" class="btn btn-danger" onclick="confirmarSweet('¿Desea eliminar el producto?','{{route('eliminar_producto', ['id'=>$dato->id])}}')"><i class="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
                                         

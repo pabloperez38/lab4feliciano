@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categorias;
+use App\Models\Productos;
 use Illuminate\Http\Request;
 
 class CategoriasController extends Controller
@@ -38,6 +39,29 @@ class CategoriasController extends Controller
             $save->save();
             return redirect()->route("categorias_index");
             }  
+
+    }
+
+    public function eliminar_categoria(Request $request, $id){
+
+        $datos = Categorias::where(["id" =>$request->id])->firstOrFail();
+
+        $existe = Productos::where(["id_categoria"=>$id])->count();
+
+        if($existe == 0){
+
+            Categorias::where(["id"=>$request->id])->delete();
+            $request->session()->put('css', 'success');
+            $request->session()->put('mensaje','La categoría se eliminó correctamente');
+
+        }else{
+
+            $request->session()->put('css', 'danger');
+            $request->session()->put('mensaje','Error al eliminar la categoría');
+
+        }       
+
+        return redirect()->route('categorias_index');
 
     }
 }

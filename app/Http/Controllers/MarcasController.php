@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Marcas;
+use App\Models\Productos;
 use Illuminate\Http\Request;
 
 class MarcasController extends Controller
@@ -39,5 +40,28 @@ class MarcasController extends Controller
             return redirect()->route("marcas_index");
             }          
      
+    }
+
+    public function eliminar_marca(Request $request, $id){
+
+        $datos = Marcas::where(["id" =>$request->id])->firstOrFail();
+        
+        $existe = Productos::where(["id_marca"=>$id])->count();
+
+        if($existe == 0){
+
+            Marcas::where(["id"=>$request->id])->delete();
+            $request->session()->put('css', 'success');
+            $request->session()->put('mensaje','La marca se eliminó correctamente');
+
+        }else{
+
+            $request->session()->put('css', 'danger');
+            $request->session()->put('mensaje','Error al eliminar la marca');
+
+        }        
+
+        return redirect()->route('marcas_index');
+
     }
 }

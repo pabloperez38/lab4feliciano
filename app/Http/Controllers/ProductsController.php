@@ -56,4 +56,17 @@ class ProductsController extends Controller
             return redirect()->route('product_index');
         }
     }
+
+    public function eliminar_producto(Request $request, $id){
+
+        $datos = Productos::where(["id" =>$request->id])->firstOrFail();
+        Productos::where(["id"=>$request->id])->delete();
+
+        $request->session()->put('css', 'success');
+        $request->session()->put('mensaje','El producto se eliminó correctamente');
+
+        return redirect()->route('product_index');
+
+    }
+
 }
