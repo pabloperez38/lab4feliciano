@@ -38,6 +38,8 @@ class LoginController extends Controller
         }
         else
         {
+            $request->session()->put('css', 'danger');
+            $request->session()->put('mensaje','Error al intentar ingresar');
             return redirect()->route('login_index');
         }
     }

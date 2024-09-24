@@ -7,13 +7,29 @@
 <main class="d-flex w-100">
     <div class="container d-flex flex-column">
         <div class="row vh-100">
-            <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+
+            <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">                
+
                 <div class="d-table-cell align-middle">
+
+                    @if(Session::has('mensaje'))
+
+                <div class="alert alert-{{Session::get('css')}} alert-dismissible fade show" role="alert">
+
+                    {{Session::get('mensaje')}}                   
+                    
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+
+                  {{Session::forget('css')}}
+                  {{Session::forget('mensaje')}}
+
+                @endif
 
                     <div class="text-center mt-4">
                         <h1 class="h2">Login</h1>
                         <p class="lead">
-                            Desarrollado por Laravel 11
+                            Desarrollado con Laravel 11
                         </p>
 
                         @if ($errors->any())

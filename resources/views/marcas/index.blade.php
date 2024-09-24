@@ -1,12 +1,12 @@
 @extends('../layouts.app')
 
-@section('title', "Productos")
+@section('title', "Marcas")
 
 @section('content')
 <main class="content">
     <div class="container-fluid p-0">
 
-        <h1 class="h1 mb-3">Productos</h1>
+        <h1 class="h1 mb-3">Marcas</h1>
 
         <div class="row">
 
@@ -29,15 +29,13 @@
                 @if ($errors->any())
 
                     <div class="alert alert-danger alert-dismissible fade show p-3" role="alert">
-
-                        <ul>
                     
                             @foreach ($errors->all() as $error)
 
-                                <li>{{$error}}</li>
+                                {{$error}}
 
                             @endforeach
-                        </ul>
+                    
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
 
@@ -61,9 +59,6 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre</th>
-                                        <th>Stock</th>
-                                        <th>Categoría</th>
-                                        <th>Marca</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -75,13 +70,10 @@
                                     <tr>
                                         <td>{{$dato->id}}</td>
                                         <td>{{$dato->nombre}}</td>
-                                        <td>{{$dato->stock}}</td>
-                                        <td>{{$dato->categorias->nombre}}</td>
-                                        <td>{{$dato->marcas->nombre}}</td>
                                         <td>
-                                            <button class="btn btn-warning"  onclick="abrir_modal('ventana_modal', 'Editar {{$dato->nombre}}', 2, ['nombre', 'stock', 'id_categoria', 'id_marca'], {{$dato}})" ><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-warning"  onclick="abrir_modal('ventana_modal', 'Editar {{$dato->nombre}}', 2, ['nombre'], {{$dato}})" ><i class="fas fa-edit"></i></button>
 
-                                            <button type="button" class="btn btn-danger" onclick="confirmarSweet('¿Desea eliminar el producto?','{{route('eliminar_producto', ['id'=>$dato->id])}}')"><i class="fas fa-trash"></i></button>
+                                            <button type="button" class="btn btn-danger" onclick="confirmarSweet('¿Desea eliminar la marca?','{{route('eliminar_marca', ['id'=>$dato->id])}}')"><i class="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
                                         
@@ -105,7 +97,7 @@
 <!-- Modal -->
 <div class="modal fade" id="ventana_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="{{route('productos_index_post')}}" name="form" method="post">
+        <form action="{{route('marcas_index_post')}}" name="form" method="post">
             {{csrf_field()}}
       <div class="modal-content">
         <div class="modal-header">
@@ -114,47 +106,10 @@
         </div>
         <div class="modal-body">
          <div class="form-group">
-            <label for="nombre">Nombre producto</label>
+            <label for="nombre">Nombre marca</label>
      
-            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre del producto">
+            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre de la marca">
          </div>
-         <div class="form-group mt-3">
-            <label for="stock">Stock producto</label>
-     
-            <input type="text" name="stock" id="stock" class="form-control" placeholder="Stock">
-         </div>
-         <div class="form-group mt-3">
-            <label for="stock">Categoría</label>
-
-            <select name="id_categoria" id="id_categoria" class="form-control">
-                
-                <option value="">Seleccione una categoría</option>
-                @foreach($categorias as $categoria)
-
-                <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
-
-                @endforeach
-
-            </select>     
-           
-         </div>
-
-         <div class="form-group mt-3">
-            <label for="stock">Marca</label>
-
-            <select name="id_marca" id="id_marca" class="form-control">
-                
-                <option value="">Seleccione una marca</option>
-                @foreach($marcas as $marca)
-
-                <option value="{{$marca->id}}">{{$marca->nombre}}</option>
-
-                @endforeach
-
-            </select>     
-           
-         </div>
-         
         </div>
         <div class="modal-footer">
 
